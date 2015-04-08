@@ -14,7 +14,7 @@ namespace Rex.Lib
         /// <summary>
         /// Name of loader
         /// </summary>
-        string Name { get; set; }
+        string Name { get; }
 
         /// <summary>
         /// Populate and return metadata hierarchy
