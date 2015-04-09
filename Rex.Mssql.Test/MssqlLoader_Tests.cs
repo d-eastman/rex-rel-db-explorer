@@ -22,13 +22,13 @@ namespace Rex.Mssql.Test
         [TestMethod]
         public void Constructor2a()
         {
-            MssqlLoader m = new MssqlLoader("CONNECTION STRING", "LOADER NAME");
+            MssqlLoader m = new MssqlLoader("CONNECTION STRING", "LOADER NAME", "DB NAME");
             //ConnectionString is not exposed, so cannot check it
             Assert.AreEqual("LOADER NAME", m.Name);
         }
 
         [TestMethod]
-        public void Load_Table4Columns0Rows()
+        public void Load_Table4Columns0Rows_ViewOfTable4Columns0Rows()
         {
             //Preparation
             Assert.AreEqual(0, RunSQLCMD(DROP_ALL_TABLES_VIEWS_SCRIPT)); 
@@ -36,7 +36,7 @@ namespace Rex.Mssql.Test
             Assert.AreEqual(0, RunSQLCMD(CREATE_ViewOfTable4Columns0Rows_VIEW_SCRIPT)); 
 
             //Load what was prepared
-            MssqlLoader m = new MssqlLoader(TEST_CONN_STRING, "Test");
+            MssqlLoader m = new MssqlLoader(TEST_CONN_STRING, "ConnTest", "DbTest");
             Database d = m.Load();
 
             Assert.IsNotNull(d);

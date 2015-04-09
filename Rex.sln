@@ -11,6 +11,32 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rex.Mssql", "Rex.Mssql\Rex.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rex.Mssql.Test", "Rex.Mssql.Test\Rex.Mssql.Test.csproj", "{BCB7A36F-7E87-4CEF-BB91-2A65935ADB64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rex.WebForms.ViewModel", "Rex.WebForms.ViewModel\Rex.WebForms.ViewModel.csproj", "{55E7870C-D65D-4D57-B671-4073A25DCC80}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Rex.WebForms.Client", "http://localhost:59441", "{737933D6-412B-4AE5-A2B2-7AD686B077CE}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{55e7870c-d65d-4d57-b671-4073a25dcc80}|Rex.WebForms.ViewModel.dll;{F2380934-F573-4434-8E8C-4F382A0A5769}|Rex.Lib.dll;{F0865D90-F3C3-4C23-B849-168F96B6E288}|Rex.Mssql.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_59441"
+		Debug.AspNetCompiler.PhysicalPath = "Rex.WebForms.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59441\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_59441"
+		Release.AspNetCompiler.PhysicalPath = "Rex.WebForms.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_59441\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "Rex.WebForms.Client\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rex.WebForms.ViewModel.Test", "Rex.WebForms.ViewModel.Test\Rex.WebForms.ViewModel.Test.csproj", "{583D48F4-2C41-448A-A1DE-F04CA6F2B174}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +59,18 @@ Global
 		{BCB7A36F-7E87-4CEF-BB91-2A65935ADB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCB7A36F-7E87-4CEF-BB91-2A65935ADB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB7A36F-7E87-4CEF-BB91-2A65935ADB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E7870C-D65D-4D57-B671-4073A25DCC80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E7870C-D65D-4D57-B671-4073A25DCC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E7870C-D65D-4D57-B671-4073A25DCC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E7870C-D65D-4D57-B671-4073A25DCC80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{737933D6-412B-4AE5-A2B2-7AD686B077CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{737933D6-412B-4AE5-A2B2-7AD686B077CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{737933D6-412B-4AE5-A2B2-7AD686B077CE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{737933D6-412B-4AE5-A2B2-7AD686B077CE}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{583D48F4-2C41-448A-A1DE-F04CA6F2B174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{583D48F4-2C41-448A-A1DE-F04CA6F2B174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{583D48F4-2C41-448A-A1DE-F04CA6F2B174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{583D48F4-2C41-448A-A1DE-F04CA6F2B174}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

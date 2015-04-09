@@ -1,0 +1,36 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="RexWebFormsClient.master.cs" Inherits="RexWebFormsClient" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table style="width: 90%; border-spacing: 0px; border-collapse: separate; vertical-align: top">
+            <tr style="vertical-align: top">
+                <td colspan="3"><span style="font-weight: bold"><asp:ContentPlaceHolder ID="HeadingContent" runat="server"></asp:ContentPlaceHolder></span></td>
+            </tr>
+            <tr style="vertical-align: top; background-color: lightgray">
+                <td>&nbsp;</td>
+                <td colspan="2"><asp:ContentPlaceHolder ID="NavContent" runat="server"></asp:ContentPlaceHolder></td>
+            </tr>
+            <tr style="vertical-align: top">
+                <td style="width: 2%">&nbsp;</td>
+                <td style="width: 50%">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </td>
+                <td style="width: 48%; background-color: whitesmoke">
+                    <u>SQL Query Log</u><br />
+                    <asp:ContentPlaceHolder ID="QueryExecutionLog" runat="server"></asp:ContentPlaceHolder>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>

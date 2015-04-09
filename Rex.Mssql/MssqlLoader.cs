@@ -42,16 +42,17 @@ namespace Rex.Mssql
 
         private string ConnectionString { get; set; }
 
-        public MssqlLoader(string connectionString, string name)
+        private string DatabaseName { get; set; }
+
+        public MssqlLoader(string connectionString, string loaderName, string databaseName)
         {
             ConnectionString = connectionString;
-            Name = name;
+            Name = loaderName;
+            DatabaseName = databaseName;
         }
 
         private Database InternalLoad()
         {
-            
-
             string sql = @"select sch.schema_id, sch.name as schema_name, tv.object_id as tableview_id, tv.name as tableview_name,
         tv.type as tableview_type, col.column_id, col.name as column_name, typ.name as type_name, col.max_length as type_length,
 		col.is_nullable, convert(bit,(case when pk.column_id is not null then 1 else 0 end)) as pk
@@ -68,7 +69,7 @@ order by sch.name, tv.name, col.name, typ.name
 "; //All user tables/views with column data in all schemas in the database
             DataTable dt = AdHocSql(sql);
 
-            Database db = new Database(Name, Name);
+            Database db = new Database(DatabaseName, string.Empty); //MSSQL databases don't really have IDs
             Schema schema = null; //Schema being built from metadata -- schemas may span rows
             TableView tv = null; //Table/view being built from metadata -- tables/views may span rows
             string prevSchemaName = string.Empty; //Keeps track of schema of previous row
@@ -128,7 +129,6 @@ order by sch.name, tv.name, col.name, typ.name
                     //For other random types, add in the column length in parens
                     typeName = typeName + "(" + typeLength + ")";
                 }
-
 
                 Column column = new Column(columnName, columnId, tv, typeName, nullable, pk);
 
