@@ -19,6 +19,6 @@ namespace Rex.WebForms.ViewModel.Test
             return d;
         }
 
-        public event EventHandler QueryExecuted; //Don't need to do anything with this either
+        public event EventHandler<QueryExecutedEventArgs> QueryExecuted; //Don't need to do anything with this either
     }
 }

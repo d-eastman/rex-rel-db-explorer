@@ -1,4 +1,5 @@
 ﻿using Rex.Lib;
+using System;
 
 namespace Rex.WebForms.ViewModel
 {
@@ -34,6 +35,23 @@ namespace Rex.WebForms.ViewModel
         public ViewModelBase(ILoader loader)
         {
             Loader = loader;
+            loader.QueryExecuted += loader_QueryExecuted;
+        }
+
+        private void loader_QueryExecuted(object sender, QueryExecutedEventArgs e)
+        {
+            //Bubble the QueryExecuted event up from the loader to the view model client
+            OnQueryExecuted(e);
+        }
+
+        public event EventHandler<QueryExecutedEventArgs> QueryExecuted;
+
+        private void OnQueryExecuted(QueryExecutedEventArgs e)
+        {
+            if (QueryExecuted != null)
+            {
+                QueryExecuted(this, e);
+            }
         }
     }
 }

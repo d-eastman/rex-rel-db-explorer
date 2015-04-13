@@ -9,6 +9,7 @@ public partial class Database : ViewPageBase
     protected void Page_Load(object sender, EventArgs e)
     {
         vm = new DatabaseViewModel(GetMetaLoader(), conn_id);
+        vm.QueryExecuted += base.OnQueryExecuted;        
         if (!IsPostBack)
         {
             reload();

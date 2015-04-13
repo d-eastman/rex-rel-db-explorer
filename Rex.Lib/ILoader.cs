@@ -26,6 +26,6 @@ namespace Rex.Lib
         /// Whenever a data store is hit with a SQL Query, we want to be notified so we can see the
         /// internals.
         /// </summary>
-        event EventHandler QueryExecuted;
+        event EventHandler<QueryExecutedEventArgs> QueryExecuted;
     }
 }

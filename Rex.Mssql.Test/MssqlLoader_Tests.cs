@@ -132,6 +132,31 @@ namespace Rex.Mssql.Test
             Assert.AreSame(v, c.TableView);
         }
 
+        [TestMethod]
+        public void QueryExecuted()
+        {
+            bool eventOccurred = false; 
+            MssqlLoader m = new MssqlLoader(TEST_CONN_STRING, "ConnTest", "DbTest");
+            m.QueryExecuted += (object sender, QueryExecutedEventArgs e) =>
+            {
+                eventOccurred = true;
+                Assert.IsNotNull(sender);
+                Assert.IsNotNull(e);
+            };
+            Database d = m.Load();
+            Assert.IsTrue(eventOccurred, "QueryExecuted should have occurred");
+        }
+
+        [TestMethod]
+        public void QueryExecuted_NoSubscribers()
+        {
+            bool eventOccurred = false;
+            MssqlLoader m = new MssqlLoader(TEST_CONN_STRING, "ConnTest", "DbTest");
+            //Do not subscribe to the m.QueryOccurred event
+            Database d = m.Load(); //Triggers QueryExecuted event
+            Assert.IsFalse(eventOccurred, "QueryExecuted should not have occurred");
+        }
+
         /// <summary>
         /// Run a T-SQL script file using the SQLCMD.EXE command line utility in Integrated Security mode on the
         /// test server and test database.

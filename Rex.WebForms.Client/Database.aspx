@@ -3,11 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadingContent" runat="Server">
-    Database:
-    <asp:Label ID="lblDatabase" runat="server"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="Server">
     <a href="Connections.aspx">Database Connections</a>
+    &nbsp;&nbsp;&nbsp;Database: <asp:Label ID="lblDatabase" runat="server"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:GridView ID="gv" runat="server" AutoGenerateColumns="false">

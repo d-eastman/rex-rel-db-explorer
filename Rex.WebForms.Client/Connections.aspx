@@ -3,10 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadingContent" runat="Server">
-    Database Connections
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="NavContent" runat="Server">
-    &nbsp;&nbsp;&nbsp;
+Database Connections
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="MainContent" runat="Server">
     <asp:GridView runat="server" ID="gvConnections" AutoGenerateColumns="false" OnRowCommand="gvConnections_RowCommand">

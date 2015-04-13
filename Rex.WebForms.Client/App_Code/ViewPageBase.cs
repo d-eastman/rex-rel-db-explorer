@@ -1,4 +1,6 @@
 ﻿using Rex.Lib;
+using System;
+using System.Web.UI.WebControls;
 
 /// <summary>
 /// Summary description for ViewPageBase
@@ -35,5 +37,31 @@ public class ViewPageBase : System.Web.UI.Page
             Response.Redirect("Default.aspx"); //Something's wrong, go home
         }
         return ret;
+    }
+
+    protected void OnQueryExecuted(object sender, QueryExecutedEventArgs e)
+    {
+        ContentPlaceHolder cph = Master.FindControl("QueryExecutionLog") as ContentPlaceHolder;
+        if (cph != null)
+        {
+            Label lbl = cph.FindControl("lblQueryExecutionLog") as Label;
+            if (lbl != null)
+            {
+                if (e != null)
+                {
+                    AppendSqlArgsToLabel(e, lbl);
+                }
+            }
+        }
+    }
+
+    protected void AppendSqlArgsToLabel(QueryExecutedEventArgs e, Label lbl)
+    {
+        if (e != null && lbl != null)
+        {
+            lbl.Text = String.Format("<p><pre>{0}</pre></p>",
+                e.Sql)
+                + lbl.Text; //Prepend so that most recent appears first in text string
+        }
     }
 }

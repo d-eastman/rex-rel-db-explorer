@@ -17,9 +17,19 @@ namespace Rex.WebForms.ViewModel.Test
 
         public Database Load()
         {
+            OnQueryExecuted(new QueryExecutedEventArgs("select * from whatever"));
             return new Database("DatabaseWithNoSchemasTestLoader NAME", "DatabaseWithNoSchemasTestLoader ID");
         }
 
-        public event EventHandler QueryExecuted; //Don't need to do anything with this either
+        public event EventHandler<QueryExecutedEventArgs> QueryExecuted; //Don't need to do anything with this either
+
+        private void OnQueryExecuted(QueryExecutedEventArgs e)
+        {
+            if (QueryExecuted != null)
+            {
+                QueryExecuted(this, e);
+            }
+        }
+
     }
 }

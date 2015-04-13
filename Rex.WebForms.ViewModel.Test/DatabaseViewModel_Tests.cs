@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Rex.Lib;
 using System;
 using System.Collections.Generic;
 
@@ -68,5 +69,31 @@ namespace Rex.WebForms.ViewModel.Test
             Assert.IsNotNull(t);
             Assert.AreEqual(0, t.Count);
         }
+
+        [TestMethod]
+        public void QueryExecuted()
+        {
+            bool eventOccurred = false;
+            DatabaseViewModel v = GenerateNewViewModel_DatabaseWithNoSchemasTestLoader();
+            v.QueryExecuted += (object sender, QueryExecutedEventArgs e) =>
+            {
+                eventOccurred = true;
+                Assert.IsNotNull(sender);
+                Assert.IsNotNull(e);
+            };
+            List<TVDisplayData> t = v.TVDisplayData; //Triggers QueryExecuted event
+            Assert.IsTrue(eventOccurred, "QueryExecuted event failed to occur");
+        }
+
+        [TestMethod]
+        public void QueryExecuted_NoSubscribers()
+        {
+            bool eventOccurred = false;
+            DatabaseViewModel v = GenerateNewViewModel_DatabaseWithNoSchemasTestLoader();
+            //Do not subscribe to the v.QueryExecuted event
+            List<TVDisplayData> t = v.TVDisplayData; //Triggers QueryExecuted event
+            Assert.IsFalse(eventOccurred, "QueryExecuted event should not have occurred");
+        }
+
     }
 }

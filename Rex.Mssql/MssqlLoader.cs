@@ -24,16 +24,16 @@ namespace Rex.Mssql
             return InternalLoad();
         }
 
-        public event EventHandler QueryExecuted;
+        public event EventHandler<QueryExecutedEventArgs> QueryExecuted;
         //
         //End ILoader interface
         //
 
-        private void OnQueryExecuted(EventArgs sargs)
+        private void OnQueryExecuted(QueryExecutedEventArgs e)
         {
             if (QueryExecuted != null)
             {
-                QueryExecuted(this, sargs); //Ok to send 'this' reference as sender?
+                QueryExecuted(this, e); //Ok to send 'this' reference as sender?
             }
         }
 
@@ -156,6 +156,7 @@ order by sch.name, tv.name, col.name, typ.name
                 adapter.SelectCommand.CommandType = CommandType.Text;
                 adapter.SelectCommand.CommandTimeout = timeoutSeconds;
                 adapter.Fill(ret);
+                OnQueryExecuted(new QueryExecutedEventArgs(sql));
             }
 
             return ret;
