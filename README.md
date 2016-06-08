@@ -1,5 +1,5 @@
 # Rex
-Simple relational database exploration tool
+Simple relational database exploration tool. Includes ASP.NET WebForms demo client.
 
 ## Screenshots ##
 
